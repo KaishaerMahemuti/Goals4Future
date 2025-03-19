@@ -34,28 +34,45 @@ const GoalForm = ({ onGoalCreated }) => {
 
   return (
     <div>
-      <h3>Add New Goal</h3>
+      <h3 className="mb-3">Add New Goal</h3>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Description:</label>
+        {/* Description Field */}
+        <div className="mb-3">
+          <label htmlFor="description" className="form-label">
+            Description:
+          </label>
           <input
+            id="description"
             type="text"
+            className="form-control"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>Deadline:</label>
+
+        {/* Deadline Field */}
+        <div className="mb-3">
+          <label htmlFor="deadline" className="form-label">
+            Deadline:
+          </label>
           <input
+            id="deadline"
             type="date"
+            className="form-control"
             value={deadline}
             onChange={(e) => setDeadline(e.target.value)}
           />
         </div>
-        <div>
-          <label>Priority:</label>
+
+        {/* Priority Field */}
+        <div className="mb-3">
+          <label htmlFor="priority" className="form-label">
+            Priority:
+          </label>
           <select
+            id="priority"
+            className="form-select"
             value={priority}
             onChange={(e) => setPriority(e.target.value)}
           >
@@ -65,7 +82,10 @@ const GoalForm = ({ onGoalCreated }) => {
             <option value="low">Low</option>
           </select>
         </div>
-        <button type="submit">Add Goal</button>
+
+        <button type="submit" className="btn btn-primary">
+          Add Goal
+        </button>
       </form>
     </div>
   );

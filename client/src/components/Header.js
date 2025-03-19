@@ -3,7 +3,7 @@ import React from 'react';
 
 const Header = () => (
   <header>
-    <h1>Goal Keeper App</h1>
+    <h1>Goals 4 Future</h1>
   </header>
 );
 

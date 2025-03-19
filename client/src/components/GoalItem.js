@@ -30,32 +30,44 @@ const GoalItem = ({ goal, onProgressUpdated, onGoalDeleted }) => {
   };
 
   return (
-    <li style={{ border: '1px solid #ccc', margin: '10px 0', padding: '10px' }}>
-      <p><strong>Description:</strong> {goal.description}</p>
-      {goal.deadline && (
-        <p><strong>Deadline:</strong> {formatDate(goal.deadline)}</p>
-      )}
-      <p><strong>Priority:</strong> {goal.priority}</p>
-      <p><strong>Status:</strong> {goal.status}</p>
+    <div className="card mb-3">
+      <div className="card-body">
+        <h5 className="card-title">Description: {goal.description}</h5>
+        {goal.deadline && (
+          <h6 className="card-subtitle mb-2 text-muted">
+            Deadline: {formatDate(goal.deadline)}
+          </h6>
+        )}
+        <p className="card-text">
+          Priority: {goal.priority}
+          <br />
+          Status: {goal.status}
+        </p>
 
-      <button onClick={() => setShowProgress(!showProgress)}>
-        {showProgress ? 'Hide Update' : 'Update Progress'}
-      </button>
-      {showProgress && (
-        <ProgressUpdate
-          goalId={goal._id}
-          onProgressUpdated={onProgressUpdated}
-        />
-      )}
+        {/* Update Progress Button */}
+        <button
+          onClick={() => setShowProgress(!showProgress)}
+          className="btn btn-secondary me-2"
+        >
+          {showProgress ? 'Hide Update' : 'Update Progress'}
+        </button>
 
-      {/* Delete Button */}
-      <button
-        onClick={handleDelete}
-        style={{ marginLeft: '10px', color: 'red' }}
-      >
-        Delete
-      </button>
-    </li>
+        {showProgress && (
+          <ProgressUpdate
+            goalId={goal._id}
+            onProgressUpdated={onProgressUpdated}
+          />
+        )}
+
+        {/* Delete Button */}
+        <button
+          onClick={handleDelete}
+          className="btn btn-danger mt-2"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
   );
 };
 

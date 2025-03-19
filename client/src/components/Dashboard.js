@@ -45,14 +45,22 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
-      <h2>Dashboard</h2>
-      <GoalForm onGoalCreated={handleGoalCreated} />
-      <GoalList
-        goals={goals}
-        onProgressUpdated={handleProgressUpdated}
-        onGoalDeleted={handleGoalDeleted}
-      />
+    <div className="container my-4">
+      <h2 className="mb-4">Dashboard</h2>
+      <div className="row">
+        {/* Left column for GoalForm */}
+        <div className="col-md-6 mb-4">
+          <GoalForm onGoalCreated={handleGoalCreated} />
+        </div>
+        {/* Right column for GoalList */}
+        <div className="col-md-6">
+          <GoalList
+            goals={goals}
+            onProgressUpdated={handleProgressUpdated}
+            onGoalDeleted={handleGoalDeleted}
+          />
+        </div>
+      </div>
     </div>
   );
 };

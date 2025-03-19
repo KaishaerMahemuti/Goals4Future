@@ -29,14 +29,17 @@ const ProgressUpdate = ({ goalId, onProgressUpdated }) => {
   };
 
   return (
-    <form onSubmit={handleUpdate}>
+    <form onSubmit={handleUpdate} className="d-flex align-items-center mt-2">
       <input
         type="text"
+        className="form-control me-2"
         value={progress}
         onChange={(e) => setProgress(e.target.value)}
         placeholder="Enter progress update"
       />
-      <button type="submit">Update</button>
+      <button type="submit" className="btn btn-primary">
+        Update
+      </button>
     </form>
   );
 };
