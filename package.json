@@ -1,0 +1,26 @@
+{
+  "name": "goals4future",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "npm start --prefix client",
+    "server": "npm run dev --prefix server",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaishaerMahemuti/Goals4Future.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KaishaerMahemuti/Goals4Future/issues"
+  },
+  "homepage": "https://github.com/KaishaerMahemuti/Goals4Future#readme",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
