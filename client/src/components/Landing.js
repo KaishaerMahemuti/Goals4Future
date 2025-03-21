@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom';
 
 const Landing = () => {
   return (
-    <div className="container my-4">
-      <h1>Welcome to Goal Keeper App</h1>
-      <p>Please log in or sign up to continue.</p>
-      <Link to="/login" className="btn btn-primary me-2">Login</Link>
-      <Link to="/signup" className="btn btn-secondary">Sign Up</Link>
+    <div className="container text-center my-5">
+      <h1>Welcome to Goals 4 Future</h1>
+      <p>Please sign up or log in to manage your goals.</p>
+      <div className="mt-4">
+        <Link to="/login" className="btn btn-primary me-3">Login</Link>
+        <Link to="/signup" className="btn btn-secondary">Sign Up</Link>
+      </div>
     </div>
   );
 };

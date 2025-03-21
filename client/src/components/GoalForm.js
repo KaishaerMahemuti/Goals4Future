@@ -9,21 +9,21 @@ const GoalForm = ({ onGoalCreated }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const token = localStorage.getItem('token');
       const response = await fetch('http://localhost:5006/api/goals', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ description, deadline, priority }),
       });
       if (!response.ok) {
         throw new Error('Failed to create goal');
       }
-      // Parse the newly created goal from the response
       const newGoal = await response.json();
-
-      // Call the callback passed down from Dashboard
+      console.log('New goal from server:', newGoal); 
       onGoalCreated(newGoal);
-
-      // Optionally clear the form
       setDescription('');
       setDeadline('');
       setPriority('');
@@ -31,6 +31,7 @@ const GoalForm = ({ onGoalCreated }) => {
       console.error(error);
     }
   };
+  
 
   return (
     <div>

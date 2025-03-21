@@ -1,15 +1,21 @@
 // client/src/components/ProgressUpdate.js
 import React, { useState } from 'react';
 
-const ProgressUpdate = ({ goalId, onProgressUpdated }) => {
+const ProgressUpdate = ({ goal, onProgressUpdated }) => {
   const [progress, setProgress] = useState('');
 
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5006/api/goals/${goalId}`, {
+      // Retrieve the JWT token from localStorage
+      const token = localStorage.getItem('token');
+
+      const response = await fetch(`http://localhost:5006/api/goals/${goal._id}`, {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`, // <-- Add this
+        },
         body: JSON.stringify({ progress }), // sending { progress: 'met' } etc.
       });
       if (!response.ok) {
@@ -19,7 +25,7 @@ const ProgressUpdate = ({ goalId, onProgressUpdated }) => {
       console.log('Progress updated:', updatedGoal);
       setProgress('');
 
-      // Optional: Notify parent to refresh or update the specific goal
+      // Notify parent to update local state
       if (onProgressUpdated) {
         onProgressUpdated(updatedGoal);
       }

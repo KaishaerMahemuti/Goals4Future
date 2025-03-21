@@ -12,19 +12,19 @@ import PrivateRoute from './PrivateRoute';
 
 const App = () => (
   <div>
-    {/* Your existing header is always visible */}
+    {/* The header is always visible */}
     <Header />
 
-    {/* Define all your routes below */}
+    {/* Define your routes */}
     <Routes>
-      {/* Landing page for visitors */}
+      {/* 1) Landing page for visitors at path="/" */}
       <Route path="/" element={<Landing />} />
 
-      {/* Signup and Login */}
+      {/* 2) Signup and Login pages */}
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
 
-      {/* Protected routes using PrivateRoute */}
+      {/* 3) Protected routes using PrivateRoute */}
       <Route
         path="/dashboard"
         element={
@@ -42,7 +42,7 @@ const App = () => (
         }
       />
 
-      {/* Fallback route if needed, or 404 handling */}
+      {/* 4) Optionally handle 404s */}
       {/* <Route path="*" element={<NotFound />} /> */}
     </Routes>
   </div>

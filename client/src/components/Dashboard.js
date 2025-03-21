@@ -9,7 +9,13 @@ const Dashboard = () => {
   // Fetch goals from the server on component mount
   const fetchGoals = async () => {
     try {
-      const response = await fetch('http://localhost:5006/api/goals');
+      console.log("Fetching goals...");
+      const token = localStorage.getItem('token');
+      const response = await fetch('http://localhost:5006/api/goals', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (!response.ok) {
         throw new Error('Failed to fetch goals');
       }
@@ -22,13 +28,22 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchGoals();
+    console.log("Goals updated:", goals);
   }, []);
-
+  useEffect(() => {
+    console.log("Goals updated:", goals);
+  }, [goals]);
   // Callback that GoalForm can call after a goal is successfully created
   const handleGoalCreated = (newGoal) => {
-    // Insert the new goal at the top
-    setGoals((prevGoals) => [newGoal, ...prevGoals]);
+    console.log('handleGoalCreated called with:', newGoal);
+    setGoals((prevGoals) => {
+      console.log('Old goals:', prevGoals);
+      console.log('Adding newGoal:', newGoal);
+      return [newGoal, ...prevGoals];
+    });
   };
+  
+  
 
   // Callback to handle updated goals (PATCH requests from ProgressUpdate)
   const handleProgressUpdated = (updatedGoal) => {

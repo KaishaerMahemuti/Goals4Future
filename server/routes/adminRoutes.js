@@ -6,13 +6,13 @@ const Goal = require('../models/Goal');
 
 // GET all goals for admin
 router.get('/all-goals', auth, async (req, res) => {
-  // Check if user is admin
   if (req.user.role !== 'admin') {
     return res.status(403).json({ error: 'Access denied, admin only' });
   }
 
   try {
-    const goals = await Goal.find();
+    // Populate the 'user' field with username and email
+    const goals = await Goal.find({}).populate('user', 'username email');
     res.json(goals);
   } catch (err) {
     console.error(err);

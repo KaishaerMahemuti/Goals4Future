@@ -15,8 +15,6 @@ const port = process.env.PORT || 5006;
 app.use(cors());
 app.use(express.json());
 
-// Define your route ONCE
-app.use('/api/goals', goalRoutes);
 
 // Connect to MongoDB
 mongoose

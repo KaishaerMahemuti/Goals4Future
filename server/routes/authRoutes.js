@@ -20,10 +20,11 @@ router.post('/register', async (req, res) => {
     const newUser = new User({ username, password, role });
     await newUser.save();
 
-    res.status(201).json({ message: 'User created successfully' });
+    // Return success
+    return res.status(201).json({ message: 'User created successfully' });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Server error' });
+    return res.status(500).json({ error: 'Server error' });
   }
 });
 
@@ -51,11 +52,15 @@ router.post('/login', async (req, res) => {
       { expiresIn: '1d' }
     );
 
-    // Return token
-    res.json({ token, role: user.role });
+    // Return token, role, AND username
+    return res.json({
+      token,
+      role: user.role,
+      username: user.username
+    });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Server error' });
+    return res.status(500).json({ error: 'Server error' });
   }
 });
 
