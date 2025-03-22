@@ -9,12 +9,12 @@
   
   body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: greenyellow;
     color: #333;
   }
   
   header {
-    background-color: #ffffff;
+    background-color: blue;
     padding: 20px;
     border-bottom: 1px solid #ccc;
   }
@@ -29,8 +29,28 @@
     text-decoration: underline;
   }
   
-  h1, h2 {
+  h1 {
     margin-bottom: 10px;
+    color: white
+  }
+
+   h2 {
+    margin-bottom: 10px;
+    color: black;
+  }
+
+  h6 {
+    margin-bottom: 10px;
+    color: blue;
+    font-size: 2.5rem; /* or any size you prefer, e.g. 24px */
+  }
+
+  .landing-message {
+    color: #555;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    /* Any other styles you like */
   }
   
   /* Add additional styles for your components */

@@ -2,18 +2,24 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './components/App';
-import './styles/main.css'; // Optional: include your main styles here
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/main.css';
 import { BrowserRouter } from 'react-router-dom';
 
-console.log("Index.js is running!"); // Debug log
+// Import the AuthProvider
+import { AuthProvider } from './AuthContext'; 
+// ^ Adjust the relative path if AuthContext.js is in the same folder or a subfolder.
+
+console.log("Index.js is running!");
 
 const container = document.getElementById('root');
 const root = createRoot(container);
+
 root.render(
-    <BrowserRouter>
+  <BrowserRouter>
+    {/* Wrap your entire app in AuthProvider */}
+    <AuthProvider>
       <App />
-    </BrowserRouter>
-  );
-class index {
-    
-}
+    </AuthProvider>
+  </BrowserRouter>
+);
