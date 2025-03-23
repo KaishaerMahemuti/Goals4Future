@@ -12,7 +12,9 @@ const app = express();
 const port = process.env.PORT || 5006;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://goals4-future.vercel.app'
+}));
 app.use(express.json());
 
 
