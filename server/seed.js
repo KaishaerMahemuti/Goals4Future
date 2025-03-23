@@ -10,8 +10,8 @@ const seedAdmin = async () => {
     await mongoose.connect(process.env.MONGO_URI);
     console.log('MongoDB connected');
 
-    const adminUsername = 'admin1'; // Change as desired
-    const adminPassword = '123'; // Change as desired
+    const adminUsername = 'admin'; // Change as desired
+    const adminPassword = '123456'; // Change as desired
 
     // Check if an admin account already exists
     const existingAdmin = await User.findOne({ username: adminUsername });

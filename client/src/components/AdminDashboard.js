@@ -3,10 +3,11 @@ import React, { useState, useEffect } from 'react';
 
 const AdminDashboard = () => {
   const [allGoals, setAllGoals] = useState([]);
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5006';
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    fetch('http://localhost:5006/api/admin/all-goals', {
+    fetch(`${API_URL}/api/admin/all-goals`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
