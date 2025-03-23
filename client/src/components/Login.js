@@ -12,14 +12,14 @@ const Login = ({ onLogin }) => {
   const [successMessage, setSuccessMessage] = useState('');
 
   const navigate = useNavigate();
-
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5006';
   const handleLogin = async (e) => {
     e.preventDefault();
     setErrorMessage('');
     setSuccessMessage('');
 
     try {
-      const response = await fetch('http://localhost:5006/api/auth/login', {
+      const response = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),

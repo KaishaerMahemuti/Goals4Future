@@ -5,12 +5,12 @@ const GoalForm = ({ onGoalCreated }) => {
   const [description, setDescription] = useState('');
   const [deadline, setDeadline] = useState('');
   const [priority, setPriority] = useState('');
-
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5006';
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5006/api/goals', {
+      const response = await fetch(`${API_URL}/api/goals`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

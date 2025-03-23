@@ -5,13 +5,14 @@ import GoalList from './GoalList';
 
 const Dashboard = () => {
   const [goals, setGoals] = useState([]);
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5006';
 
   // Fetch goals from the server on component mount
   const fetchGoals = async () => {
     try {
       console.log("Fetching goals...");
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5006/api/goals', {
+      const response = await fetch(`${API_URL}/api/goals`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 
 const ProgressUpdate = ({ goal, onProgressUpdated }) => {
   const [progress, setProgress] = useState('');
-
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5006';
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
       // Retrieve the JWT token from localStorage
       const token = localStorage.getItem('token');
 
-      const response = await fetch(`http://localhost:5006/api/goals/${goal._id}`, {
+      const response = await fetch(`${API_URL}/api/goals/${goal._id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
